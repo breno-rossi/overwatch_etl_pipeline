@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      - POSTGRES_PASSWORD=colorado63
+      - POSTGRES_USER=breno
+      - POSTGRES_DB=weather_etl
+    ports:
+      - 1818:5432
+    restart: unless-stopped
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
+  

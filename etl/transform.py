@@ -16,3 +16,4 @@ df_raw =extract_heroes_data("pc", "americas","quickplay")
 
 df_transformed = transform_dataset(df_raw,"pc", "americas","quickplay")
 print(df_transformed)
+print(df_transformed.to_string())

@@ -1,8 +1,6 @@
 import pandas as pd
 from datetime import datetime
 
-
-
 def transform_dataset (df, platform, gamemode, region):
     df["platform"] = platform
     df["gamemode"] = gamemode

@@ -1,8 +1,5 @@
 import psycopg2
 
-
-
-
 def load_into_db (df):
     conn = None
     cursor = None

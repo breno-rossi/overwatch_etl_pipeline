@@ -12,7 +12,6 @@ def run_pipeline():
     df_transformed = transform_dataset(df_raw, "pc", "americas", "quickplay")
     load_into_db(df_transformed)
 
-
 with DAG(
 dag_id="heroes_dag",
         start_date=datetime(2026,1,1),

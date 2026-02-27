@@ -27,6 +27,15 @@ services:
     command: standalone
     depends_on:
       - postgres
+  
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 2020:3000
+    depends_on:
+      - postgres
+
+
 volumes:
   postgres_data:
   

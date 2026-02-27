@@ -19,7 +19,3 @@ def extract_heroes_data(platform, region, gamemode ):
     data = requisicao.json()
     data = pd.DataFrame(data)
     return data
-
-
-df = extract_heroes_data("pc","americas","competitive")
-print(df)

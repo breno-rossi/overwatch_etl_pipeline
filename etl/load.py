@@ -4,10 +4,12 @@ import psycopg2
 
 
 def load_into_db (df):
+    conn = None
+    cursor = None
     try:
         conn = psycopg2.connect(
-        host = "localhost",
-        port = 1818,
+        host="postgres",   
+        port=5432,
         dbname="weather_etl",
         user="breno",
         password="colorado63")
@@ -20,8 +22,11 @@ def load_into_db (df):
         conn.commit()
 
     except Exception as e:
-        conn.rollback()
+        if conn:
+            conn.rollback()
         print(f"Erro {e}")
     finally:
-        cursor.close()
-        conn.close()
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()

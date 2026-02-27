@@ -12,6 +12,21 @@ services:
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
       - postgres_data:/var/lib/postgresql/data
+  
+  apache:
+    image: apache/airflow:2.9.0
+    container_name: airflow
+    environment:
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://breno:colorado63@postgres:5432/airflow
+      - PYTHONPATH= /opt/airflow
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./etl:/opt/airflow/etl
+    ports:
+      - 1919:8080
+    command: standalone
+    depends_on:
+      - postgres
 volumes:
   postgres_data:
   

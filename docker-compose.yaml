@@ -12,6 +12,8 @@ services:
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - etl_network
   
   apache:
     image: apache/airflow:2.9.0
@@ -27,6 +29,8 @@ services:
     command: standalone
     depends_on:
       - postgres
+    networks:
+      - etl_network
   
   grafana:
     image: grafana/grafana:latest
@@ -34,7 +38,12 @@ services:
       - 2020:3000
     depends_on:
       - postgres
+    networks:
+      - etl_network
 
+networks:
+  etl_network:
+    driver: bridge
 
 volumes:
   postgres_data:

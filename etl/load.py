@@ -7,9 +7,9 @@ def load_into_db (df):
         conn = psycopg2.connect(
         host="postgres",   
         port=5432,
-        dbname="weather_etl",
-        user="breno",
-        password="colorado63")
+        dbname="",            #nome do banco de dados
+        user="",              #usuário do db
+        password="")          #senha do db
 
         cursor = conn.cursor()
         sql_command_insert = "INSERT INTO heroes_stats (hero, pickrate, winrate, platform, gamemode, region, inserted_at) VALUES (%s, %s, %s, %s, %s, %s, %s)"

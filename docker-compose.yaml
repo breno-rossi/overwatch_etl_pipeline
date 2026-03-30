@@ -19,7 +19,7 @@ services:
     image: apache/airflow:2.9.0
     container_name: airflow
     environment:
-      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://breno:colorado63@postgres:5432/airflow
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://USERNAME:PASSWORD@postgres:5432/airflow
       - PYTHONPATH= /opt/airflow
     volumes:
       - ./dags:/opt/airflow/dags
